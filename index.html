@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEFA Champions League - Liguilla 2025|2026</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: white;
+            transition: border-color 0.3s;
+        }
+        select:focus {
+            outline: none;
+            border-color: #4285f4;
+        }
+        select:disabled {
+            background-color: #f9f9f9;
+            cursor: not-allowed;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: white;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus, input[type="email"]:focus {
+            outline: none;
+            border-color: #4285f4;
+        }
+        .selected-info {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #4285f4;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #3367d6;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .reset-btn {
+            background-color: #dc3545;
+        }
+        .reset-btn:hover {
+            background-color: #c82333;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        .warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            padding: 3px;
+            margin-bottom: 20px;
+        }
+        .progress {
+            background-color: #4285f4;
+            height: 20px;
+            border-radius: 8px;
+            transition: width 0.3s ease;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            font-size: 12px;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .match-container {
+            background-color: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .match-teams {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .team-name {
+            font-weight: bold;
+            flex: 1;
+            text-align: center;
+        }
+        .score-inputs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .score-input {
+            width: 50px;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .vs-text {
+            font-weight: bold;
+            color: #666;
+            margin: 0 10px;
+        }
+        .rules-section {
+            background-color: #f0f8ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .rules-section ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .rules-section li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Barra de progreso -->
+        <div class="progress-bar">
+            <div class="progress" id="progressBar" style="width: 33%;">Paso 1 de 3</div>
+        </div>
+
+        <!-- PANTALLA 1: Información personal -->
+        <div class="screen active" id="screen1">
+            <h1>⚽ UEFA CHAMPIONS LEAGUE - LIGUILLA - 2025|2026 ⚽</h1>
+            <h2 style="text-align: center; color: #4285f4; margin-bottom: 20px;">🏆 JORNADA 1 🏆</h2>
+            
+            <!-- Descripción del premio -->
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: center;">
+                <h3 style="margin: 0 0 15px 0; font-size: 24px;">💰 PREMIO GLOBAL</h3>
+                <div style="font-size: 18px; line-height: 1.6;">
+                    <p style="margin: 8px 0;"><strong>🎟 ENTRADA = $10</strong></p>
+                    <p style="margin: 8px 0;"><strong>🥇 1er Lugar = 60%</strong></p>
+                    <p style="margin: 8px 0;"><strong>🥈 2do Lugar = 30%</strong></p>
+                    <p style="margin: 8px 0;"><strong>🥉 3er Lugar = 10%</strong></p>
+                </div>
+                <div style="margin-top: 15px; font-size: 14px; background-color: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px;">
+                    <strong>NOTA:</strong> "Puede estar Sujeto a Cambio, dependiendo de la Cantidad de Personas que Seamos".
+                </div>
+            </div>
+            
+            <!-- Información personal -->
+            <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #4285f4;">
+                <h3 style="margin-top: 0; color: #333;">📝 Información Personal</h3>
+                
+                <div class="question">
+                    <label for="nombre">Nombre y Apellido: <span style="color: red;">*</span></label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="question">
+                    <label for="email">Correo Electrónico: <span style="color: red;">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button type="button" onclick="siguientePantalla()">Siguiente ➡️</button>
+            </div>
+        </div>
+
+    <!-- PANTALLA 2: Predicciones de partidos -->
+    <div class="screen" id="screen2">
+        <h2 style="text-align: center; color: #333; margin-bottom: 20px;">⚽ FASE DE LIGA - JORNADA 1 - 09/16</h2>
+        
+        <!-- Reglas del juego -->
+        <div class="rules-section">
+            <h4 style="margin-top: 0; color: #007bff;">📋 Sistema de Puntuación:</h4>
+            <ul>
+                <li><strong>Marcador Exacto = 12pts</strong></li>
+                <li><strong>Diferencia = 6pts</strong></li>
+                <li><strong>Solo Ganador = 3pts</strong></li>
+            </ul>
+            
+            <h4 style="color: #007bff;">👥 Elección de Líneas (DEF, MC, DEL) por JORNADA:</h4>
+            <p style="margin: 5px 0;"><strong>Se Escogerán:</strong></p>
+            <ul>
+                <li>1 LÍNEA DE DEFENSA</li>
+                <li>1 LÍNEA DE MEDIO CAMPOS</li>
+                <li>1 LÍNEA DE DELANTEROS</li>
+            </ul>
+            
+            <p style="margin: 10px 0;"><strong>— PARA LA LÍNEA DE DELANTEROS:</strong></p>
+            <ul style="margin-left: 20px;">
+                <li>GOL = 2pts</li>
+                <li>ASISTENCIAS = 2pts</li>
+            </ul>
+            
+            <p style="margin: 10px 0;"><strong>— PARA LA LÍNEA DE MEDIOCAMPOS:</strong></p>
+            <ul style="margin-left: 20px;">
+                <li>GOL = 3pts</li>
+                <li>ASISTENCIAS = 3pts</li>
+            </ul>
+            
+            <p style="margin: 10px 0;"><strong>— PARA LA LÍNEA DE DEFENSAS:</strong></p>
+            <ul style="margin-left: 20px;">
+                <li>PORTERÍA INVADIDA = 5pts</li>
+                <li>GOL = 2pts</li>
+                <li>ASISTENCIAS = 2pts</li>
+            </ul>
+            
+            <div style="margin-top: 15px; padding: 10px; background-color: #fff3cd; border-radius: 4px;">
+                <p style="margin: 5px 0;"><strong>📝 Notas importantes:</strong></p>
+                <ul style="margin: 5px 0;">
+                    <li>La Posición de los Jugadores la Tomaremos Según PÁGINA OFICIAL DE LA CHAMPIONS.</li>
+                    <li>Todos los Jugadores Pertenecientes al Grupo, serán aptos para sumar puntos. No importa si vienen de la Banca.</li>
+                    <li><strong>🆕 No podrán escoger Líneas del mismo equipo.</strong></li>
+                    <li><strong>🆕 Se podrán repetir las líneas entre los participantes de la Quiniela.</strong></li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: 10px; padding: 10px; background-color: #d4edda; border-radius: 4px;">
+                <p style="margin: 0;"><strong>⚽ Cantidad de Goles por JORNADA = 10pts</strong> para el que acierte la Cantidad Exacta de Goles.</p>
+                <p style="margin: 5px 0; font-size: 14px;">En caso de que 2 o más estén empatados, se otorgarán 10pts a todos los que Acierten.</p>
+                <p style="margin: 5px 0; font-size: 14px;"><em>Una JORNADA es Completa cuando todos los equipos hayan jugado la misma cantidad de partidos.</em></p>
+            </div>
+        </div>
+
+        <!-- Predicciones de partidos -->
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #dc3545;">
+            <h3 style="margin-top: 0; color: #333;">🏆 Predicciones de Partidos</h3>
+            
+            <div id="partidosContainer">
+                <p style="text-align: center; color: #666;">Cargando partidos...</p>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button type="button" class="reset-btn" onclick="anteriorPantalla2()">⬅️ Anterior</button>
+            <button type="button" onclick="siguientePantalla2()">Siguiente ➡️</button>
+        </div>
+    </div>
+
+        <!-- PANTALLA 3: Selección de equipos -->
+        <div class="screen" id="screen3">
+            <h2 style="text-align: center; color: #333; margin-bottom: 30px;">⚽ Selección de Equipos</h2>
+            
+            <form id="dynamicForm">
+                <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #28a745;">
+                    <h3 style="margin-top: 0; color: #333;">Elige tus equipos favoritos</h3>
+                
+                    <!-- Pregunta 1 -->
+                    <div class="question">
+                        <label for="pregunta1">Primera opción:</label>
+                        <select id="pregunta1" name="pregunta1">
+                            <option value="">-- Selecciona una opción --</option>
+                        </select>
+                        <div id="info1" class="selected-info" style="display: none;"></div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="question">
+                        <label for="pregunta2">Segunda opción:</label>
+                        <select id="pregunta2" name="pregunta2" disabled>
+                            <option value="">-- Primero selecciona la primera opción --</option>
+                        </select>
+                        <div id="info2" class="selected-info" style="display: none;"></div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="question">
+                        <label for="pregunta3">Tercera opción:</label>
+                        <select id="pregunta3" name="pregunta3" disabled>
+                            <option value="">-- Completa las opciones anteriores --</option>
+                        </select>
+                        <div id="info3" class="selected-info" style="display: none;"></div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="question">
+                        <label for="pregunta4">Cuarta opción:</label>
+                        <select id="pregunta4" name="pregunta4" disabled>
+                            <option value="">-- Completa las opciones anteriores --</option>
+                        </select>
+                        <div id="info4" class="selected-info" style="display: none;"></div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="question">
+                        <label for="pregunta5">Quinta opción:</label>
+                        <select id="pregunta5" name="pregunta5" disabled>
+                            <option value="">-- Completa las opciones anteriores --</option>
+                        </select>
+                        <div id="info5" class="selected-info" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="reset-btn" onclick="anteriorPantalla()">⬅️ Anterior</button>
+                    <button type="button" onclick="enviarFormulario()">Enviar Respuestas</button>
+                    <button type="button" class="reset-btn" onclick="reiniciarFormulario()">Reiniciar</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="results" class="results" style="display: none;">
+            <h3>Respuestas enviadas:</h3>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Array con todas las opciones disponibles (personaliza aquí tus 30 opciones)
+        const opcionesOriginales = [
+            'Opción A', 'Opción B', 'Opción C', 'Opción D', 'Opción E',
+            'Opción F', 'Opción G', 'Opción H', 'Opción I', 'Opción J',
+            'Opción K', 'Opción L', 'Opción M', 'Opción N', 'Opción O',
+            'Opción P', 'Opción Q', 'Opción R', 'Opción S', 'Opción T',
+            'Opción U', 'Opción V', 'Opción W', 'Opción X', 'Opción Y',
+            'Opción Z', 'Opción 1', 'Opción 2', 'Opción 3', 'Opción 4'
+        ];
+
+        // Array para guardar las opciones seleccionadas
+        let opcionesSeleccionadas = [];
+
+        // Inicializar el formulario
+        function inicializarFormulario() {
+            llenarSelect('pregunta1', opcionesOriginales);
+            
+            // Agregar event listeners
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`pregunta${i}`).addEventListener('change', function() {
+                    manejarSeleccion(i);
+                });
+            }
+            
+            // Cargar partidos dinámicamente
+            cargarPartidos();
+        }
+
+        // Funciones para navegación entre pantallas
+        function siguientePantalla() {
+            // Validar campos obligatorios
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            if (!nombre) {
+                alert('Por favor, ingresa tu nombre y apellido.');
+                document.getElementById('nombre').focus();
+                return;
+            }
+            
+            if (!email) {
+                alert('Por favor, ingresa tu correo electrónico.');
+                document.getElementById('email').focus();
+                return;
+            }
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, ingresa un correo electrónico válido.');
+                document.getElementById('email').focus();
+                return;
+            }
+            
+            // Cambiar a pantalla 2 (predicciones)
+            document.getElementById('screen1').classList.remove('active');
+            document.getElementById('screen2').classList.add('active');
+            
+            // Actualizar barra de progreso
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '66%';
+            progressBar.textContent = 'Paso 2 de 3';
+        }
+
+        function anteriorPantalla() {
+            // Cambiar a pantalla 1
+            document.getElementById('screen2').classList.remove('active');
+            document.getElementById('screen3').classList.remove('active');
+            document.getElementById('screen1').classList.add('active');
+            
+            // Actualizar barra de progreso
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '33%';
+            progressBar.textContent = 'Paso 1 de 3';
+        }
+
+        function siguientePantalla2() {
+            // Cambiar a pantalla 3 (selección de equipos)
+            document.getElementById('screen2').classList.remove('active');
+            document.getElementById('screen3').classList.add('active');
+            
+            // Actualizar barra de progreso
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '100%';
+            progressBar.textContent = 'Paso 3 de 3';
+        }
+
+        function anteriorPantalla2() {
+            // Cambiar a pantalla 2 (predicciones)
+            document.getElementById('screen3').classList.remove('active');
+            document.getElementById('screen2').classList.add('active');
+            
+            // Actualizar barra de progreso
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = '66%';
+            progressBar.textContent = 'Paso 2 de 3';
+        }
+
+        // Llenar un select con opciones
+        function llenarSelect(selectId, opciones) {
+            const select = document.getElementById(selectId);
+            const placeholderText = select.options[0].text;
+            
+            // Limpiar select
+            select.innerHTML = '';
+            
+            // Agregar placeholder
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.text = placeholderText;
+            select.appendChild(placeholder);
+            
+            // Agregar opciones disponibles
+            opciones.forEach(opcion => {
+                if (!opcionesSeleccionadas.includes(opcion)) {
+                    const option = document.createElement('option');
+                    option.value = opcion;
+                    option.text = opcion;
+                    select.appendChild(option);
+                }
+            });
+        }
+
+        // Manejar la selección de una opción
+        function manejarSeleccion(numeroP) {
+            const select = document.getElementById(`pregunta${numeroP}`);
+            const valorSeleccionado = select.value;
+            const infoDiv = document.getElementById(`info${numeroP}`);
+            
+            // Remover selección anterior de este select
+            const indiceAnterior = opcionesSeleccionadas.findIndex((item, index) => 
+                item && document.getElementById(`pregunta${index + 1}`) === select
+            );
+            
+            if (indiceAnterior !== -1) {
+                opcionesSeleccionadas[indiceAnterior] = null;
+            }
+            
+            if (valorSeleccionado) {
+                // Guardar nueva selección
+                opcionesSeleccionadas[numeroP - 1] = valorSeleccionado;
+                
+                // Mostrar información de selección
+                infoDiv.innerHTML = `✓ Seleccionaste: <strong>${valorSeleccionado}</strong>`;
+                infoDiv.style.display = 'block';
+                
+                // Habilitar siguiente pregunta
+                if (numeroP < 5) {
+                    const siguienteSelect = document.getElementById(`pregunta${numeroP + 1}`);
+                    siguienteSelect.disabled = false;
+                    llenarSelect(`pregunta${numeroP + 1}`, opcionesOriginales);
+                }
+            } else {
+                // Ocultar información
+                infoDiv.style.display = 'none';
+                
+                // Deshabilitar preguntas siguientes
+                for (let i = numeroP + 1; i <= 5; i++) {
+                    const selectSiguiente = document.getElementById(`pregunta${i}`);
+                    selectSiguiente.disabled = true;
+                    selectSiguiente.selectedIndex = 0;
+                    document.getElementById(`info${i}`).style.display = 'none';
+                    if (opcionesSeleccionadas[i - 1]) {
+                        opcionesSeleccionadas[i - 1] = null;
+                    }
+                }
+            }
+
+            // Actualizar todas las listas desplegables
+            actualizarTodasLasListas();
+        }
+
+        // Actualizar todas las listas para eliminar opciones ya seleccionadas
+        function actualizarTodasLasListas() {
+            for (let i = 1; i <= 5; i++) {
+                const select = document.getElementById(`pregunta${i}`);
+                if (!select.disabled) {
+                    const valorActual = select.value;
+                    llenarSelect(`pregunta${i}`, opcionesOriginales);
+                    if (valorActual && !opcionesSeleccionadas.includes(valorActual)) {
+                        select.value = valorActual;
+                    }
+                }
+            }
+        }
+
+        // Enviar formulario
+        async function enviarFormulario() {
+            // Validar campos obligatorios
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            if (!nombre) {
+                alert('Por favor, ingresa tu nombre y apellido.');
+                document.getElementById('nombre').focus();
+                return;
+            }
+            
+            if (!email) {
+                alert('Por favor, ingresa tu correo electrónico.');
+                document.getElementById('email').focus();
+                return;
+            }
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, ingresa un correo electrónico válido.');
+                document.getElementById('email').focus();
+                return;
+            }
+            
+            const respuestas = opcionesSeleccionadas.filter(opcion => opcion !== null && opcion !== undefined);
+            
+            if (respuestas.length === 0) {
+                alert('Por favor, selecciona al menos una opción de equipo.');
+                return;
+            }
+
+            // Mostrar resultados
+            const resultsDiv = document.getElementById('results');
+            const resultContent = document.getElementById('resultContent');
+            
+            let html = '<h4>👤 Información Personal:</h4>';
+            html += `<p><strong>Nombre:</strong> ${nombre}</p>`;
+            html += `<p><strong>Email:</strong> ${email}</p>`;
+
+            // Mostrar predicciones de partidos
+            html += '<h4>⚽ Predicciones de Partidos:</h4>';
+            const numPartidos = window.totalPartidos || 0;
+            const partidosData = window.partidosCargados || [];
+
+            if (numPartidos > 0) {
+                html += '<ul>';
+                for (let i = 1; i <= numPartidos; i++) {
+                    const score1 = document.getElementById(`score${i}_1`);
+                    const score2 = document.getElementById(`score${i}_2`);
+                    
+                    if (score1 && score2 && partidosData[i-1]) {
+                        const partido = partidosData[i-1];
+                        html += `<li><strong>${partido.equipo1} vs ${partido.equipo2}:</strong> ${score1.value || '0'} - ${score2.value || '0'}</li>`;
+                    }
+                }
+                html += '</ul>';
+            } else {
+                html += '<p>No se encontraron predicciones.</p>';
+            }
+
+            html += '<h4>⚽ Equipos Seleccionados:</h4><ul>';
+            respuestas.forEach((respuesta, index) => {
+                html += `<li><strong>Opción ${index + 1}:</strong> ${respuesta}</li>`;
+            });
+            html += '</ul>';
+            
+            resultContent.innerHTML = html;
+            resultsDiv.style.display = 'block';
+
+            // Recopilar predicciones de todos los partidos
+            const predicciones = {};
+            const totalPartidos = window.totalPartidos || 0;
+
+            for (let i = 1; i <= totalPartidos; i++) {
+                const score1 = document.getElementById(`score${i}_1`);
+                const score2 = document.getElementById(`score${i}_2`);
+                
+                if (score1 && score2) {
+                    predicciones[`partido${i}_equipo1`] = score1.value || '';
+                    predicciones[`partido${i}_equipo2`] = score2.value || '';
+                }
+            }
+
+            // Enviar los datos a Google Sheets (incluir todo)
+            const datosCompletos = {
+                nombre: nombre,
+                email: email,
+                respuestas: respuestas,
+                predicciones: predicciones
+            };
+            
+            await enviarAGoogleSheets(datosCompletos);
+            
+            console.log('Datos completos:', datosCompletos);
+        }
+
+        // Reiniciar formulario
+        function reiniciarFormulario() {
+            opcionesSeleccionadas = [];
+            
+            // Limpiar campos de información personal
+            document.getElementById('nombre').value = '';
+            document.getElementById('email').value = '';
+            
+            for (let i = 1; i <= 5; i++) {
+                const select = document.getElementById(`pregunta${i}`);
+                const infoDiv = document.getElementById(`info${i}`);
+                
+                select.selectedIndex = 0;
+                infoDiv.style.display = 'none';
+                
+                if (i > 1) {
+                    select.disabled = true;
+                }
+            }
+            
+                llenarSelect('pregunta1', opcionesOriginales);
+                document.getElementById('results').style.display = 'none';
+
+                // Volver a la primera pantalla
+                document.getElementById('screen2').classList.remove('active');
+                document.getElementById('screen1').classList.add('active');
+
+                // Resetear barra de progreso
+                const progressBar = document.getElementById('progressBar');
+                progressBar.style.width = '50%';
+                progressBar.textContent = 'Paso 1 de 2';
+        }
+
+        // Función para enviar a Google Sheets
+        async function enviarAGoogleSheets(datosCompletos) {
+            const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxBCxfcNDPycawaYWM0ADKURea7mdjq9N9O3ePu1KoOnW5rn4KfWd6kdyI9OkmKirOMLA/exec';
+            
+            try {
+                // Preparar datos exactamente como los espera Apps Script
+                const datos = {
+                    nombre: datosCompletos.nombre,
+                    email: datosCompletos.email
+                };
+                
+                datosCompletos.respuestas.forEach((respuesta, index) => {
+                    datos[`pregunta${index + 1}`] = respuesta;
+                });
+
+                // Agregar predicciones de partidos
+                if (datosCompletos.predicciones) {
+                    Object.keys(datosCompletos.predicciones).forEach(key => {
+                        datos[key] = datosCompletos.predicciones[key];
+                    });
+                }
+
+                console.log('🚀 Enviando datos:', datos);
+                console.log('📊 Datos completos recibidos:', datosCompletos);
+                if (datosCompletos.predicciones) {
+                    console.log('📊 Predicciones encontradas:', Object.keys(datosCompletos.predicciones).length);
+                }
+
+                // Mostrar indicador de carga
+                const button = document.querySelector('button[onclick="enviarFormulario()"]');
+                const textoOriginal = button.textContent;
+                button.textContent = 'Enviando...';
+                button.disabled = true;
+                
+                // Método directo con fetch
+                try {
+                    const response = await fetch(WEB_APP_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(datos)
+                    });
+
+                    console.log('✅ Petición enviada, status:', response.status);
+                    alert('✅ ¡Inscripción enviada correctamente! \n\n⚽ Revisa tu Google Sheet para confirmar.');
+                    
+                } catch (fetchError) {
+                    console.error('❌ Error específico en fetch:', fetchError);
+                    throw fetchError; // Re-lanzar el error para que lo capture el catch externo
+                }
+                
+            } catch (error) {
+                console.error('❌ Error:', error);
+                alert('❌ Error al enviar. Por favor intenta nuevamente.');
+            } finally {
+                // Restaurar botón
+                const button = document.querySelector('button[onclick="enviarFormulario()"]');
+                if (button) {
+                    button.textContent = 'Enviar Respuestas';
+                    button.disabled = false;
+                }
+            }
+        }
+
+        // Inicializar cuando carga la página
+        document.addEventListener('DOMContentLoaded', inicializarFormulario);
+
+        // Cargar partidos dinámicamente desde Google Sheets
+        async function cargarPartidos() {
+            const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxBCxfcNDPycawaYWM0ADKURea7mdjq9N9O3ePu1KoOnW5rn4KfWd6kdyI9OkmKirOMLA/exec';
+            
+            try {
+                console.log('🚀 Cargando partidos desde:', WEB_APP_URL);
+                
+                const response = await fetch(`${WEB_APP_URL}?action=getPartidos`, {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                
+                console.log('✅ Respuesta recibida:', response.status);
+                
+                const text = await response.text();
+                console.log('📝 Texto crudo:', text);
+                
+                const data = JSON.parse(text);
+                console.log('📊 Datos parseados:', data);
+                
+                if (data.status === 'success' && data.partidos) {
+                    console.log('✅ Partidos encontrados:', data.partidos.length);
+                    generarPartidosHTML(data.partidos);
+                } else {
+                    console.error('❌ Error en respuesta:', data.message);
+                    usarPartidosPorDefecto();
+                }
+            } catch (error) {
+                console.error('❌ Error obteniendo partidos:', error);
+                usarPartidosPorDefecto();
+            }
+        }
+
+        // Generar HTML de partidos dinámicamente agrupados por fecha
+        function generarPartidosHTML(partidos) {
+            const container = document.getElementById('partidosContainer');
+            if (!container) return;
+            
+            // Agrupar partidos por fecha
+            const partidosPorFecha = {};
+            
+            partidos.forEach((partido) => {
+                const fecha = partido.fecha || 'Sin fecha';
+                if (!partidosPorFecha[fecha]) {
+                    partidosPorFecha[fecha] = [];
+                }
+                partidosPorFecha[fecha].push(partido);
+            });
+            
+            let html = '';
+            let partidoIndex = 0;
+            
+            // Generar HTML para cada fecha
+            Object.keys(partidosPorFecha).forEach((fecha) => {
+                html += `<h4 style="color: #dc3545; margin: 20px 0 15px 0; border-bottom: 2px solid #dc3545; padding-bottom: 5px;">🏆 Predicciones de Partidos del día ${fecha}</h4>`;
+                
+                partidosPorFecha[fecha].forEach((partido) => {
+                    partidoIndex++;
+                    html += `
+                    <div class="match-container">
+                        <div class="match-teams">
+                            <div class="team-name">${partido.equipo1}</div>
+                            <div class="score-inputs">
+                                <input type="number" class="score-input" id="score${partidoIndex}_1" min="0" max="20" placeholder="0">
+                                <span class="vs-text">VS</span>
+                                <input type="number" class="score-input" id="score${partidoIndex}_2" min="0" max="20" placeholder="0">
+                            </div>
+                            <div class="team-name">${partido.equipo2}</div>
+                        </div>
+                    </div>`;
+                });
+            });
+            
+            container.innerHTML = html;
+            
+            // Guardar partidos globalmente para usar al enviar
+            window.partidosCargados = partidos;
+            window.totalPartidos = partidoIndex;
+        }
+
+        // Partidos por defecto si falla la carga
+        function usarPartidosPorDefecto() {
+            const partidosDefecto = [
+                {equipo1: 'Real Madrid', equipo2: 'Stuttgart'},
+                {equipo1: 'PSV', equipo2: 'Juventus'},
+                {equipo1: 'Barcelona', equipo2: 'Monaco'}
+            ];
+            generarPartidosHTML(partidosDefecto);
+        }
+
+        // Debug para verificar conexión
+        async function debugConexion() {
+            const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxBCxfcNDPycawaYWM0ADKURea7mdjq9N9O3ePu1KoOnW5rn4KfWd6kdyI9OkmKirOMLA/exec';
+            
+            try {
+                console.log('🧪 Probando conexión...');
+                console.log('URL:', WEB_APP_URL);
+                
+                const response = await fetch(`${WEB_APP_URL}?action=getPartidos`);
+                console.log('Respuesta recibida:', response);
+                
+                const text = await response.text();
+                console.log('Texto crudo:', text);
+                
+                const data = JSON.parse(text);
+                console.log('Datos parseados:', data);
+                
+            } catch (error) {
+                console.error('❌ Error en debug:', error);
+            }
+        }
+
+        // Ejecutar debug automáticamente
+        window.addEventListener('load', function() {
+            setTimeout(debugConexion, 2000);
+        });
+
+    </script>
+</body>
+</html>
