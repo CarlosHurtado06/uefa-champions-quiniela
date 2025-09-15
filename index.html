@@ -187,6 +187,63 @@
         .rules-section li {
             margin: 5px 0;
         }
+        /* Responsive design para móviles */
+        @media (max-width: 768px) {
+            .match-teams {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .team-name {
+                font-size: 14px;
+                text-align: center;
+                min-height: auto;
+                padding: 5px;
+            }
+            
+            .score-inputs {
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .vs-text {
+                font-size: 14px;
+                margin: 0 5px;
+            }
+            
+            .score-input {
+                width: 45px;
+                padding: 6px;
+                font-size: 14px;
+            }
+            
+            .match-container {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            
+            /* Hacer el formulario más compacto en móvil */
+            .form-container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            h2 {
+                font-size: 18px;
+            }
+            
+            .rules-section {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .rules-section ul {
+                padding-left: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -824,12 +881,12 @@
                     <div class="match-container">
                         <div class="match-teams">
                             <div class="team-name">${partido.equipo1}</div>
-                            <div class="score-inputs">
-                                <input type="number" class="score-input" id="score${partidoIndex}_1" min="0" max="20" placeholder="0">
-                                <span class="vs-text">VS</span>
-                                <input type="number" class="score-input" id="score${partidoIndex}_2" min="0" max="20" placeholder="0">
-                            </div>
                             <div class="team-name">${partido.equipo2}</div>
+                        </div>
+                        <div class="score-inputs">
+                            <input type="number" class="score-input" id="score${partidoIndex}_1" min="0" max="20" placeholder="0">
+                            <span class="vs-text">VS</span>
+                            <input type="number" class="score-input" id="score${partidoIndex}_2" min="0" max="20" placeholder="0">
                         </div>
                     </div>`;
                 });
