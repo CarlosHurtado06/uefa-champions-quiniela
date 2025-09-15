@@ -143,21 +143,30 @@
             padding: 15px;
             margin-bottom: 15px;
         }
-        .match-teams {
+        .match-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+        .teams-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
+            justify-content: center;
+            gap: 20px;
+        }
+        .team-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
         }
         .team-name {
             font-weight: bold;
-            flex: 1;
             text-align: center;
-        }
-        .score-inputs {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 14px;
+            color: #555;
         }
         .score-input {
             width: 50px;
@@ -167,11 +176,14 @@
             text-align: center;
             font-size: 16px;
             font-weight: bold;
+            appearance: textfield;
+            -moz-appearance: textfield;
         }
-        .vs-text {
-            font-weight: bold;
-            color: #666;
-            margin: 0 10px;
+        /* Quitar flechas en Chrome, Safari, Edge */
+        .score-input::-webkit-outer-spin-button,
+        .score-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
         .rules-section {
             background-color: #f0f8ff;
@@ -189,26 +201,12 @@
         }
         /* Responsive design para móviles */
         @media (max-width: 768px) {
-            .match-teams {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .team-name {
-                font-size: 14px;
-                text-align: center;
-                min-height: auto;
-                padding: 5px;
-            }
-            
-            .score-inputs {
-                justify-content: center;
+            .teams-row {
                 gap: 15px;
             }
             
-            .vs-text {
-                font-size: 14px;
-                margin: 0 5px;
+            .team-name {
+                font-size: 12px;
             }
             
             .score-input {
@@ -217,12 +215,15 @@
                 font-size: 14px;
             }
             
+            .match-title {
+                font-size: 14px;
+            }
+            
             .match-container {
                 padding: 10px;
                 margin-bottom: 10px;
             }
             
-            /* Hacer el formulario más compacto en móvil */
             .form-container {
                 padding: 15px;
             }
@@ -879,14 +880,16 @@
                     partidoIndex++;
                     html += `
                     <div class="match-container">
-                        <div class="match-teams">
-                            <div class="team-name">${partido.equipo1}</div>
-                            <div class="team-name">${partido.equipo2}</div>
-                        </div>
-                        <div class="score-inputs">
-                            <input type="number" class="score-input" id="score${partidoIndex}_1" min="0" max="20" placeholder="0">
-                            <span class="vs-text">VS</span>
-                            <input type="number" class="score-input" id="score${partidoIndex}_2" min="0" max="20" placeholder="0">
+                        <div class="match-title">${partido.equipo1} vs ${partido.equipo2}</div>
+                        <div class="teams-row">
+                            <div class="team-column">
+                                <div class="team-name">${partido.equipo1}</div>
+                                <input type="number" class="score-input" id="score${partidoIndex}_1" min="0" max="20" placeholder="0">
+                            </div>
+                            <div class="team-column">
+                                <div class="team-name">${partido.equipo2}</div>
+                                <input type="number" class="score-input" id="score${partidoIndex}_2" min="0" max="20" placeholder="0">
+                            </div>
                         </div>
                     </div>`;
                 });
